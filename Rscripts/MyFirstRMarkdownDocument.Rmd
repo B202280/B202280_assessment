@@ -27,6 +27,13 @@ plot(pressure)
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
 
+# B202280 source code for assessment in R.
+
+# Link to my github repository
+## https://github.com/B202280/B202280_assessment
+
+# Loading NHS datasets
+
 library(NHSRdatasets)
 library(tidyverse)
 library(here)
@@ -37,10 +44,10 @@ library(caret)
 #Load the ae_attendances data.
 data(ae_attendances)
 
-data(ae_attendances)
 ae<-ae_attendances
 class(ae)
 
+# Viewing the data
 ae
 
 ae <- rowid_to_column(ae, "index")
@@ -55,8 +62,10 @@ ae %>%
   # Format as a table
   kable()
   
+## I saved my data here  
   write_csv(ae, here("RawData", "ae_attendances.csv"))
 
+# Subsetting the data: I chose the following variables in order to focus on a+e attendance rates and how these may vary over time. 
 ae<-ae %>% select(index, period, attendances)
 
 ae %>%
@@ -69,6 +78,7 @@ ae %>%
   # format as a table
   kable()
 
+## the glimpse function give us a snapshot of the data. 
 glimpse(ae)
 write_csv(ae, here("RawData", "ae_attendances_ENG.csv"))
 
@@ -89,7 +99,7 @@ aeTrain <- ae[ trainIndex,]
 nrow(aeTrain)
 #There are 12,753 records in my training data. That is a large dataset!
 
-### Now tabulate ae_attendances_ENG training data for my report
+### Now I will tabulate ae_attendances_ENG training data for my report
 aeTrain %>%
   # set the period column to show in Month-Year format
   mutate_at(vars(period), format, "%b-%y") %>% 
@@ -143,4 +153,18 @@ aeTest  %>%
 ### Now save my ae_attendances_ENG test data to my working data folder 'Data'
 write_csv(aeTest, here("Data", "ae_attendances_test.csv"))
 
+# Data capture tool 
+## Due to an error when I tried to load the panda package, I was unable to proceed to create my data capture tool in python.
+
+# Data dictionary for test data
+library(dataMeta)
+library (tidyverse)
+
+library(here)
+
+CollectedData=read_csv(here("RawData", "CollectedDataAll.csv"))
+
+# Error: '/home/jovyan/B202280/Working_with_data_types_and_structures_in_Python_and_R_2021_22_assessment/RawData/CollectedDataAll.csv' does not exist.
+
+## this error arose because I was not able to create my data capture tool in python.
 
