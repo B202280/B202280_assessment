@@ -1,0 +1,5 @@
+variable name,variable description,variable options,notes
+attendances,The number of attendances for this department type at this organisation for this month.,200 to 200,
+consent,The consent from the end-user to process and share the data collected with the data capture tool.,TRUE,
+index,The index column that allows us to link the data collected to the original ae_attendances data in the 'RawData' folder.,1155 to 1155,
+period,"The month that this activity relates to, stored as a date (1st of each month).",2016-12-01,
